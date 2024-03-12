@@ -94,8 +94,7 @@ class CoursePaymentCreateAPIView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         new_payment_amount = serializer.save()
-        # product_name = get_product(new_payment_amount.name)
-        # new_payment_amount.name = product_name
+
         product_name, payment_link, session_id = get_link(new_payment_amount.name, new_payment_amount.payment_amount)
         new_payment_amount.name = product_name
         new_payment_amount.payment_link = payment_link
