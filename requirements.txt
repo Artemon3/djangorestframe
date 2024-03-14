@@ -1,3 +1,4 @@
+pip
 asgiref
 Django~=3.2.12
 djangorestframework==3.14.0
@@ -8,3 +9,4 @@ sqlparse
 django-filter~=23.5
 djangorestframework-simplejwt
 stripe==8.6.0
+django-cors-headers
