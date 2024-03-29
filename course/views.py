@@ -1,3 +1,4 @@
+from django.utils import timezone
 from rest_framework import viewsets, generics, permissions, serializers
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny
@@ -9,6 +10,7 @@ from course.paginators import CoursePaginator, LessonPaginator
 from course.permissions import IsOwner
 from course.serializers import CourseSerializer, LessonSerializer, SubscriptionSerializer, CoursePaymentSerializer
 from course.services import get_link
+from course.tasks import material_update
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -19,6 +21,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
     def get_permissions(self):
         if self.action == 'create':
